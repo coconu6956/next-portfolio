@@ -32,7 +32,7 @@ export default function Header() {
           </Link>
         </nav>
         {/* 다크모드 토글 버튼 */}
-        <DarkModeToggleButton />
+        {/* <DarkModeToggleButton /> */}
       </div>
     </header>
   );

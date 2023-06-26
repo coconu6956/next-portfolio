@@ -1,21 +1,10 @@
 "use client";
-import { useState, useEffect } from 'react'
-import { useTheme } from "next-themes";
+// import { UseTheme } from "next-themes";
 
 export default function darkModeToggleButton() {
   // theme : 현재 값 getter
   // setTheme : 현재 값 바꾸기 setter
-  const [mounted, setMounted] = useState(false)
-  const { theme, setTheme } = useTheme()
-
-  // useEffect only runs on the client, so now we can safely show the UI
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  if (!mounted) {
-    return null
-  }
+  // const { theme, setTheme } = UseTheme();
 
   return (
     <>
@@ -28,7 +17,7 @@ export default function darkModeToggleButton() {
         dark:hover:bg-slate-700 dark:hover:text-yellow-300
         "
         type="button"
-        onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+        // onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
       >
         {/* 라이트 모드 */}
         <svg
