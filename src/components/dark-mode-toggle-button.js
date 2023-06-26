@@ -1,10 +1,10 @@
 "use client";
-import { useTheme } from "next-themes";
+import { UseTheme } from "next-themes";
 
 export default function darkModeToggleButton() {
   // theme : 현재 값 getter
   // setTheme : 현재 값 바꾸기 setter
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme } = UseTheme();
 
   return (
     <>
