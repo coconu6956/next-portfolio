@@ -1,4 +1,9 @@
 import Image from "next/legacy/image";
+import Link from "next/link";
+
+import GithubImg from "../../../public/github-icon.png";
+import FigmaImg from "../../../public/figma-icon.png";
+import ZeplinImg from "../../../public/zeplin-icon.png";
 
 export default function ProjectItem({ data }) {
   const id = data.id; // show = a:fw
@@ -31,63 +36,75 @@ export default function ProjectItem({ data }) {
       endDateStringArray[2]
     );
 
-    console.log(`startDate: ${startDate}`);
-    console.log(`endDate: ${endDate}`);
-
     const diffInMs = Math.abs(endDate - startDate);
     const result = diffInMs / (1000 * 60 * 60 * 24);
 
-    console.log(`기간 : ${result}`);
     return result;
   };
 
   if (visible === "a:fw") {
     return (
       <div className="project-card">
-        <Image
-          className="rounded-t-xl"
-          src={imgSrc}
-          alt="cover image"
-          width="100%"
-          height="50%"
-          layout="responsive"
-          objectFit="cover"
-          quality={100}
-        />
-        <div className="p-4 w-full">
-          <h1 className="text-2xl font-bold">{title}</h1>
-          <p className="my-1">작업기간 : {start} ~ {end} ({calculatedPeriod(start, end)} 일)</p>
-          <h3 className="mt-4 text-xl">{descrtion}</h3>
-          <div className="flex items-start mt-2">
-            {tags.map((tag) => (
-              <h1
-                className="px-2 py-1 mr-2 rounded-md bg-sky-200 dark:gb-sky-700 w-30"
-                key={tag.id}
-              >
-                {tag.name}
-              </h1>
-            ))}
-          </div>
+        <Link href={!url ? "/projects" : url} target="_blank">
+          <Image
+            className="rounded-t-xl"
+            src={imgSrc}
+            alt="cover image"
+            width="100%"
+            height="50%"
+            layout="responsive"
+            objectFit="cover"
+            quality={100}
+          />
+          <div className="p-4 w-full">
+            <h1 className="text-2xl font-bold">{title}</h1>
+            <p className="my-1">
+              작업기간 : {start} ~ {end} ({calculatedPeriod(start, end)} 일)
+            </p>
+            <h3 className="my-1">{descrtion}</h3>
+            <div className="flex items-start mt-2">
+              {tags.map((tag) => (
+                <h1
+                  className="px-2 py-1 mr-2 rounded-md bg-sky-200 dark:gb-sky-700 w-30"
+                  key={tag.id}
+                >
+                  {tag.name}
+                </h1>
+              ))}
+            </div>
 
-          {github !== null ? (
-            <a href={github} target="_blank">
-              Github 바로가기
-            </a>
-          ) : null}
-          {figma !== null ? (
-            <a href={figma} target="_blank">
-              Figma 바로가기
-            </a>
-          ) : null}
-          {zeplin !== null ? (
-            <a href={zeplin} target="_blank">
-              Zeplin 바로가기
-            </a>
-          ) : null}
-          <a href={url} target="_blank">
-            방문하기
-          </a>
-        </div>
+            {github !== null ? (
+              <a href={github} target="_blank">
+                <image
+                  src={GithubImg}
+                  alt="github icon"
+                  width="150"
+                  height="150"
+                />
+              </a>
+            ) : null}
+            {figma !== null ? (
+              <a href={figma} target="_blank">
+                <image
+                  src={FigmaImg}
+                  alt="figma icon"
+                  width="150"
+                  height="150"
+                />
+              </a>
+            ) : null}
+            {zeplin !== null ? (
+              <a href={zeplin} target="_blank">
+                <image
+                  src={ZeplinImg}
+                  alt="zeplin icon"
+                  width="150"
+                  height="150"
+                />
+              </a>
+            ) : null}
+          </div>
+        </Link>
       </div>
     );
   }
