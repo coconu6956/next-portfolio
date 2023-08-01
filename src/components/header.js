@@ -27,9 +27,6 @@ export default function Header() {
           <Link href="/projects" className='mr-5 hover:text-gray-900'>
             프로젝트
           </Link>
-          <Link href="https://coconu6956.github.io/portfolio/" className='mr-5 hover:text-gray-900'>
-            이전 포트폴리오
-          </Link>
         </nav>
         {/* 다크모드 토글 버튼 */}
         {/* <DarkModeToggleButton /> */}
